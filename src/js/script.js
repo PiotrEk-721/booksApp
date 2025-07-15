@@ -39,7 +39,7 @@ class BooksList {
   initData() {
     this.data = dataSource.books;
   }
-  render() {    
+  render() {
     const thisBookList = this;
 
     const listSelector = thisBookList.bookListContainer;
