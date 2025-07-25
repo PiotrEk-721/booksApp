@@ -1,20 +1,20 @@
 const select = {
   templateOf: {
-    bookList: "#template-book",
+    bookList: '#template-book',
   },
   books: {
     image: {
-      class: ".book__image",
-      className: "book__image",
-      selectorById: (id) => `.book__image[data-id="${id}"]`,
+      class: '.book__image',
+      className: 'book__image',
+      selectorById: (id) => `.book__image[data-id='${id}']`,
     },
-    hidden: "hidden",
-    imagefavouriteClass: "favorite",
-    list: ".books-panel .books-list",
-    rating: ".book__rating__fill",
+    hidden: 'hidden',
+    imagefavouriteClass: 'favorite',
+    list: '.books-panel .books-list',
+    rating: '.book__rating__fill',
   },
   containerOf: {
-    filters: ".filters",
+    filters: '.filters',
   },
 };
 
@@ -72,10 +72,10 @@ class BooksList {
 
     const bookListContainer = thisBookList.bookListContainer;
 
-    bookListContainer.addEventListener("click", function (event) {
+    bookListContainer.addEventListener('click', function (event) {
       event.preventDefault();
     });
-    bookListContainer.addEventListener("dblclick", function (event) {
+    bookListContainer.addEventListener('dblclick', function (event) {
       const parentLink = event.target.offsetParent;
 
       if (
@@ -84,7 +84,7 @@ class BooksList {
       ) {
         event.preventDefault();
         const bookId = parentLink.dataset.id;
-        console.log("clicked on the book with the id: ", bookId);
+        console.log('clicked on the book with the id: ', bookId);
         const indexFavouriteBook = thisBookList.favoriteBooks.indexOf(bookId);
 
         if (indexFavouriteBook === -1) {
@@ -94,19 +94,19 @@ class BooksList {
         }
 
         parentLink.classList.toggle(select.books.imagefavouriteClass);
-        console.log("favoriteBooks: ", thisBookList.favoriteBooks);
+        console.log('favoriteBooks: ', thisBookList.favoriteBooks);
       }
     });
 
     const filtersForm = thisBookList.filtersForm;
 
-    filtersForm.addEventListener("click", function (event) {
+    filtersForm.addEventListener('click', function (event) {
       const target = event.target;
 
       if (
-        target.tagName === "INPUT" &&
-        target.type === "checkbox" &&
-        target.name === "filter"
+        target.tagName === 'INPUT' &&
+        target.type === 'checkbox' &&
+        target.name === 'filter'
       ) {
         const filterValue = target.value;
 
@@ -151,15 +151,14 @@ class BooksList {
   }
   determineRatingBgc(rating) {
     if (rating < 6) {
-      return "linear-gradient(to bottom, #fefcea 0%, #f1da36 100%)";
+      return 'linear-gradient(to bottom, #fefcea 0%, #f1da36 100%)';
     } else if (rating <= 8) {
-      return "linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)";
+      return 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)';
     } else if (rating <= 9) {
-      return "linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)";
+      return 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)';
     } else {
-      return "linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)";
+      return 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)';
     }
   }
 }
-
-const app = new BooksList();
+new BooksList();
